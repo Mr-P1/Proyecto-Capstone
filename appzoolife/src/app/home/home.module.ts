@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
-import { FormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { HomeRoutingModule } from './home-routing.module';
+import { HomeComponent } from './pages/home/home.component';
+import { AnimalListComponent } from './components/animal-list/animal-list.component';
 
 
 @NgModule({
+  declarations: [
+    HomeComponent,
+    AnimalListComponent
+  ],
   imports: [
     CommonModule,
-    FormsModule,
-    IonicModule,
-    HomePageRoutingModule
-  ],
-  declarations: [HomePage]
+    HomeRoutingModule
+  ]
 })
-export class HomePageModule {}
+export class HomeModule { }
