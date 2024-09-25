@@ -1,7 +1,0 @@
-{
-  "name": "appZooLife",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
