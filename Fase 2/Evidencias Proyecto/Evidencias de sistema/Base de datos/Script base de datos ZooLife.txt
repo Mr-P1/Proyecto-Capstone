@@ -1,0 +1,222 @@
+CREATE TABLE Animales (
+    id VARCHAR(255) PRIMARY KEY, -- Identificador único del documento
+    altura VARCHAR(50),
+    area VARCHAR(100),
+    audio TEXT,
+    audioAnimal TEXT,
+    clase VARCHAR(50),
+    comportamiento TEXT,
+    cuidados TEXT,
+    dato_curioso TEXT,
+    descripcion_1 TEXT,
+    descripcion_2 TEXT,
+    descripcion_3 TEXT,
+    dieta TEXT,
+    disponibilidad VARCHAR(50),
+    estado_conservacion TEXT,
+    habitat TEXT,
+    imagen TEXT,
+    nombre_cientifico VARCHAR(100),
+    nombre_comun VARCHAR(50),
+    peso VARCHAR(50),
+    posicion_mapa INT,
+    precaucion_1 TEXT,
+    precaucion_2 TEXT,
+    precaucion_3 TEXT,
+    video TEXT,
+    zona TEXT
+);
+
+CREATE TABLE AnimalesVistos (
+    id VARCHAR(255) PRIMARY KEY, -- Identificador único del documento
+    animalId VARCHAR(255),       -- Referencia al ID del animal visto
+    area VARCHAR(100),           -- Área donde se vio el animal
+    metodoIngreso VARCHAR(50),   -- Método de ingreso al área
+    userId VARCHAR(255),         -- Identificador del usuario que vio al animal
+    vistoEn TIMESTAMP            -- Fecha y hora en que se vio el animal
+);
+
+CREATE TABLE Boletas (
+    id VARCHAR(255) PRIMARY KEY, -- Identificador único del documento
+    fecha TIMESTAMP,             -- Fecha y hora de emisión de la boleta
+    tipo VARCHAR(50)             -- Tipo de boleta (por ejemplo: "general")
+);
+
+CREATE TABLE BoletasUsadas (
+    id VARCHAR(255) PRIMARY KEY, -- Identificador único del documento
+    fecha TIMESTAMP,             -- Fecha y hora en que se usó la boleta
+    id_usuario VARCHAR(255),     -- Identificador del usuario que usó la boleta
+    tipo VARCHAR(50)             -- Tipo de boleta (por ejemplo: "general")
+);
+
+CREATE TABLE Eventos (
+    id VARCHAR(255) PRIMARY KEY, -- Identificador único del evento
+    fecha TIMESTAMP,             -- Fecha y hora del evento
+    titulo VARCHAR(100),         -- Título o nombre del evento
+    descripcion TEXT,            -- Descripción del evento
+    lugar VARCHAR(255),          -- Lugar donde se realizará el evento
+    organizador VARCHAR(255)     -- Identificador del organizador (puede ser un usuario o una entidad)
+);
+
+CREATE TABLE Mapa (
+    id VARCHAR(255) PRIMARY KEY, -- Identificador único del mapa
+    imagen TEXT                  -- URL de la imagen del mapa
+);
+
+CREATE TABLE Noticias (
+    id VARCHAR(255) PRIMARY KEY, -- Identificador único de la noticia
+    descripcion TEXT,            -- Descripción detallada de la noticia
+    fecha TIMESTAMP,             -- Fecha y hora de publicación de la noticia
+    imagen TEXT,                 -- URL de la imagen asociada con la noticia
+    nombre VARCHAR(255)          -- Título o nombre de la noticia
+);
+
+CREATE TABLE Oirs (
+    id VARCHAR(255) PRIMARY KEY, -- Identificador único del documento
+    detalles TEXT,               -- Detalles de la solicitud
+    esAfectado BOOLEAN,          -- Indica si el usuario es afectado directamente (true/false)
+    fechaEnvio TIMESTAMP,        -- Fecha y hora en que se envió la solicitud
+    respondido BOOLEAN,          -- Indica si la solicitud fue respondida (true/false)
+    tipoSolicitud VARCHAR(50),   -- Tipo de solicitud (por ejemplo, "felicitacion")
+    userId VARCHAR(255)          -- Identificador del usuario que envió la solicitud
+);
+
+CREATE TABLE Plantas (
+    id VARCHAR(255) PRIMARY KEY,     -- Identificador único del documento
+    altura VARCHAR(50),              -- Altura de la planta
+    area VARCHAR(100),               -- Área donde se encuentra la planta
+    audio TEXT,                      -- URL del audio asociado a la planta
+    cuidados TEXT,                   -- Detalles sobre los cuidados de la planta
+    curiosidad TEXT,                 -- Curiosidades sobre la planta
+    descripcion_1 TEXT,              -- Primera descripción de la planta
+    descripcion_2 TEXT,              -- Segunda descripción de la planta
+    descripcion_3 TEXT,              -- Tercera descripción de la planta
+    estado TEXT,                     -- Estado de conservación
+    familia VARCHAR(50),             -- Familia a la que pertenece la planta
+    floracion TEXT,                  -- Información sobre la floración
+    imagen TEXT,                     -- URL de la imagen de la planta
+    importancia TEXT,                -- Importancia ecológica o cultural de la planta
+    nombre_cientifico VARCHAR(100),  -- Nombre científico de la planta
+    nombre_comun VARCHAR(100),       -- Nombre común de la planta
+    peso VARCHAR(50),                -- Peso (si aplica)
+    posicion_mapa INT,               -- Posición de la planta en el mapa
+    precaucion TEXT,                 -- Precauciones relacionadas con la planta
+    usos TEXT,                       -- Usos de la planta (madera, ornamental, etc.)
+    video TEXT,                      -- URL del video asociado a la planta
+    zonas TEXT                       -- Zonas donde se encuentra la planta
+);
+
+CREATE TABLE PlantasVistas (
+    id VARCHAR(255) PRIMARY KEY,  -- Identificador único del documento
+    area VARCHAR(100),            -- Área donde se vio la planta
+    metodoIngreso VARCHAR(50),    -- Método de ingreso al área (por ejemplo: "card")
+    plantaId VARCHAR(255),        -- Identificador de la planta vista
+    userId VARCHAR(255),          -- Identificador del usuario que vio la planta
+    vistoEn TIMESTAMP             -- Fecha y hora en que se vio la planta
+);
+
+CREATE TABLE PreguntasAnimales (
+    id VARCHAR(255) PRIMARY KEY,       -- Identificador único de la pregunta
+    animal_id VARCHAR(255),            -- Identificador del animal asociado a la pregunta
+    pregunta TEXT,                     -- Texto de la pregunta
+    respuesta_correcta VARCHAR(1),     -- Letra de la respuesta correcta (a, b, c, d)
+    respuesta_a TEXT,                  -- Respuesta opción A
+    respuesta_b TEXT,                  -- Respuesta opción B
+    respuesta_c TEXT,                  -- Respuesta opción C
+    respuesta_d TEXT,                  -- Respuesta opción D
+    tipo VARCHAR(50)                   -- Tipo de pregunta (por ejemplo: "Niño")
+);
+
+CREATE TABLE PreguntasPlantas (
+    id VARCHAR(255) PRIMARY KEY,       -- Identificador único de la pregunta
+    planta_id VARCHAR(255),            -- Identificador de la planta asociada a la pregunta
+    pregunta TEXT,                     -- Texto de la pregunta
+    respuesta_correcta VARCHAR(1),     -- Letra de la respuesta correcta (a, b, c, d)
+    respuesta_a TEXT,                  -- Respuesta opción A
+    respuesta_b TEXT,                  -- Respuesta opción B
+    respuesta_c TEXT,                  -- Respuesta opción C
+    respuesta_d TEXT,                  -- Respuesta opción D
+    tipo VARCHAR(50)                   -- Tipo de pregunta (por ejemplo: "Adulto")
+);
+
+CREATE TABLE PremiosUsuarios (
+    id VARCHAR(255) PRIMARY KEY,      -- Identificador único del documento
+    codigo VARCHAR(50),              -- Código del premio asignado al usuario
+    estado BOOLEAN,                  -- Estado del premio (true: canjeado, false: no canjeado)
+    fecha TIMESTAMP,                 -- Fecha en que se asignó el premio
+    premioId VARCHAR(255),           -- Identificador del premio
+    usuarioId VARCHAR(255)           -- Identificador del usuario que recibió el premio
+);
+
+CREATE TABLE PremiosTrivias (
+    id VARCHAR(255) PRIMARY KEY,      -- Identificador único del premio
+    cantidad INT,                     -- Cantidad disponible del premio
+    descripcion TEXT,                 -- Descripción detallada del premio
+    imagen TEXT,                      -- URL de la imagen del premio
+    nombre VARCHAR(255),              -- Nombre del premio
+    puntos_necesarios INT             -- Puntos necesarios para obtener el premio
+);
+
+CREATE TABLE Reacciones (
+    id VARCHAR(255) PRIMARY KEY,  -- Identificador único del documento
+    animalId VARCHAR(255),        -- Identificador del animal asociado a la reacción
+    fecha TIMESTAMP,              -- Fecha y hora de la reacción
+    reaction BOOLEAN,             -- Tipo de reacción (true: positiva, false: negativa)
+    tipo VARCHAR(50),             -- Tipo de usuario o categoría (por ejemplo: "adulto")
+    userId VARCHAR(255)           -- Identificador del usuario que realizó la reacción
+);
+
+CREATE TABLE ReaccionesPlantas (
+    id VARCHAR(255) PRIMARY KEY,  -- Identificador único del documento
+    plantaId VARCHAR(255),        -- Identificador de la planta asociada a la reacción
+    fecha TIMESTAMP,              -- Fecha y hora de la reacción
+    reaction BOOLEAN,             -- Tipo de reacción (true: positiva, false: negativa)
+    tipo VARCHAR(50),             -- Tipo de usuario o categoría (por ejemplo: "niño")
+    userId VARCHAR(255)           -- Identificador del usuario que realizó la reacción
+);
+
+CREATE TABLE RespuestasTrivia (
+    id VARCHAR(255) PRIMARY KEY,      -- Identificador único del documento
+    abandonada BOOLEAN,               -- Indica si la trivia fue abandonada (true/false)
+    fecha TIMESTAMP,                  -- Fecha y hora en que se respondió la trivia
+    genero_usuario VARCHAR(50),       -- Género del usuario que respondió la trivia
+    pregunta_id VARCHAR(255),         -- Identificador de la pregunta asociada a la respuesta
+    resultado BOOLEAN,                -- Resultado de la respuesta (true: correcta, false: incorrecta)
+    tiempoRespuesta DECIMAL(10, 3),   -- Tiempo tomado para responder (en segundos)
+    tipo VARCHAR(50),                 -- Tipo de usuario o categoría (por ejemplo: "adulto")
+    user_id VARCHAR(255)              -- Identificador del usuario que respondió
+);
+
+CREATE TABLE TriviaVisitas (
+    id VARCHAR(255) PRIMARY KEY,        -- Identificador único del documento
+    completada BOOLEAN,                 -- Indica si la trivia fue completada (true/false)
+    fecha DATE,                         -- Fecha en que se realizó la trivia
+    nivelGanado INT,                    -- Nivel alcanzado por el usuario
+    puntosGanados INT,                  -- Puntos obtenidos en la trivia
+    respuestasCorrectas INT,            -- Número de respuestas correctas
+    triviaRealizada BOOLEAN,            -- Indica si la trivia fue realizada (true/false)
+    userId VARCHAR(255)                 -- Identificador del usuario que realizó la trivia
+);
+
+CREATE TABLE Usuarios (
+    id VARCHAR(255) PRIMARY KEY,        -- Identificador único del usuario
+    auth_id VARCHAR(255),              -- Identificador de autenticación
+    comuna VARCHAR(100),               -- Comuna donde reside el usuario
+    correo VARCHAR(255),               -- Correo electrónico del usuario
+    fechaNacimiento TIMESTAMP,         -- Fecha de nacimiento del usuario
+    genero VARCHAR(50),                -- Género del usuario
+    nivel INT,                         -- Nivel actual del usuario
+    nombre VARCHAR(100),               -- Nombre del usuario
+    patente VARCHAR(50),               -- Patente asociada al usuario (si aplica)
+    puntos INT,                        -- Puntos acumulados por el usuario
+    region VARCHAR(100),               -- Región donde reside el usuario
+    telefono VARCHAR(20),              -- Número de teléfono del usuario
+    token TEXT                         -- Token de notificación asociado al usuario
+);
+
+CREATE TABLE Ratings (
+    id VARCHAR(255) PRIMARY KEY,  -- Identificador único del documento
+    comments TEXT,                -- Comentario del usuario
+    date TIMESTAMP,               -- Fecha y hora de la calificación
+    rating INT                    -- Valor de la calificación (por ejemplo, de 1 a 5)
+);
